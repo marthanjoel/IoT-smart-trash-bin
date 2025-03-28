@@ -1,0 +1,11 @@
+{
+    "projectName": "SmartTrashBin",
+    "info": {
+        "IP":"0.0.0.0",
+        "port":"80"
+    },
+    "broker": {
+        "IP": "test.mosquitto.org",
+        "port": 1883
+    }
+}

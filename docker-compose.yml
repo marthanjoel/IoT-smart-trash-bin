@@ -1,0 +1,128 @@
+version: '3.12'
+services:
+  stb_service_catalog:
+    build: ./01_ServiceCatalog	
+    container_name: stb_service_catalog
+    restart: always
+    expose:
+      - "80"
+    ports: 
+      - "9080:80"
+
+  stb_resource_catalog:
+    build: ./02_ResourceCatalog
+    container_name: stb_resource_catalog
+    restart: always
+    expose:
+      - "80"
+    ports: 
+      - "9270:80"
+    depends_on: 
+      - stb_service_catalog
+
+  stb_quality_check:
+    build: ./03_QualityCheck
+    container_name: stb_quality_check
+    restart: always
+    expose:
+      - "1883"
+    ports: 
+      - "1884:1883"
+    depends_on: 
+      - stb_service_catalog
+      - stb_resource_catalog
+
+  stb_quantity_check:
+    build: ./04_QuantityCheck
+    container_name: stb_quantity_check
+    restart: always
+    expose:
+      - "1883"
+    ports: 
+      - "1885:1883"
+    depends_on: 
+      - stb_service_catalog
+      - stb_resource_catalog
+
+  stb_alert_check:
+    build: ./05_AlertCheck
+    container_name: stb_alert_check
+    restart: always
+    expose:
+      - "1883"
+    ports: 
+      - "1886:1883"
+    depends_on: 
+      - stb_service_catalog
+      - stb_resource_catalog
+      - stb_quality_check
+      - stb_quantity_check
+
+  stb_statistical_analyzer:
+    build: ./06_StatisticalAnalizer
+    container_name: stb_statistical_analyzer
+    restart: always
+    expose:
+      - "1883"
+      - "80"
+    ports: 
+      - "1887:1883"
+      - "8086:80"
+    depends_on: 
+      - stb_service_catalog
+      - stb_resource_catalog
+
+  stb_led_manager:
+    build: ./07_LedManager
+    container_name: stb_led_manager
+    restart: always
+    expose:
+      - "1883"
+    ports: 
+      - "1888:1883"
+    depends_on: 
+      - stb_service_catalog
+      - stb_resource_catalog
+
+  stb_thingspeak:
+    build: ./08_Thingspeak
+    container_name: stb_thingspeak
+    restart: always
+    expose:
+      - "1883"
+    ports: 
+      - "1889:1883"
+    depends_on: 
+      - stb_service_catalog
+      - stb_resource_catalog
+
+  stb_telegram:
+    build: ./09_TelegramBot
+    container_name: stb_telegram
+    restart: always
+    expose:
+      - "1883"
+    ports: 
+      - "1890:1883"
+    depends_on: 
+      - stb_service_catalog
+      - stb_resource_catalog
+      - stb_alert_check
+      - stb_statistical_analyzer
+
+  stb_sensor_simulator:
+    build: ./10_SensorsSimulator
+    container_name: stb_sensor_simulator
+    restart: always
+    expose:
+      - "1883"
+    ports: 
+      - "1891:1883"
+    depends_on: 
+      - stb_service_catalog
+      - stb_resource_catalog
+      - stb_alert_check
+      - stb_statistical_analyzer
+      - stb_thingspeak
+      - stb_telegram
+

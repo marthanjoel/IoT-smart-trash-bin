@@ -1,0 +1,8 @@
+{
+    "name" : "QuantityCheck",
+    "ServiceType" : "MQTT",
+    "topicS1" : "SmartTrashBin/Sensors/ultrasonic/#",
+    "topicS2" : "SmartTrashBin/Sensors/weight/#",
+    "topicP" : "SmartTrashBin/Services/QuantityCheck"
+
+}

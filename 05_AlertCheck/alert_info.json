@@ -1,0 +1,8 @@
+{
+    "name" : "AlertCheck",
+    "ServiceType" : "MQTT",
+    "topicS1" : "SmartTrashBin/Services/QualityCheck/#",
+    "topicS2" : "SmartTrashBin/Services/QuantityCheck/#",
+    "topicP" : "SmartTrashBin/Services/AlertCheck"
+
+}

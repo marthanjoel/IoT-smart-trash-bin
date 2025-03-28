@@ -1,0 +1,14 @@
+{
+    "name": "ThingSpeakAdaptor",
+    "ThingspeakURL": "https://api.thingspeak.com/update?api_key=",
+    "ChannelWriteAPIkey": "PUIAU3HA03PRSEN6",
+    "APIKEY": "UBF7UC47SYD1PTIC",
+    "ChannelReadAPIKey": "8OYTKXZP2K5N5PCP",
+    "topicS1":"SmartTrashBin/Services/",
+    "topicS2":"SmartTrashBin/Sensors/",
+    "ServiceType" : ["MQTT", "REST"],
+    "info": {
+        "IP": "stb_thingspeak",
+        "port": 80
+    }
+}

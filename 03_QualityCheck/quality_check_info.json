@@ -1,0 +1,9 @@
+{
+    "name" : "QualityCheck",
+    "ServiceType" : "MQTT",
+    "topicS1" : "SmartTrashBin/Sensors/humidity/#",
+    "topicS2" : "SmartTrashBin/Sensors/gas/#",
+    "topicS3" : "SmartTrashBin/Sensors/temperature/#",
+    "topicP" : "SmartTrashBin/Services/QualityCheck"
+
+}

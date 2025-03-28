@@ -1,0 +1,7 @@
+{
+    "name" : "LedManager",
+    "ServiceType" : "MQTT",
+    "topicS" : "SmartTrashBin/Services/QuantityCheck/#",
+    "topicP" : "SmartTrashBin/Services/LedManager"
+
+}

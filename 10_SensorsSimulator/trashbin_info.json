@@ -1,0 +1,14 @@
+{
+    "ID" : "2503592",
+    "location" : "Aule G",
+    "max_capacity" : 200,
+    "max_weight" : 200,
+    "sensors" : ["humidity", "gas", "temperature", "ultrasonic", "weight"],
+    "topicP1" : "SmartTrashBin/Sensors/humidity",
+    "topicP2" : "SmartTrashBin/Sensors/gas",
+    "topicP3" : "SmartTrashBin/Sensors/temperature",
+    "topicP4" : "SmartTrashBin/Sensors/ultrasonic", 
+    "topicP5" : "SmartTrashBin/Sensors/weight", 
+    "topicS" : "SmartTrashBin/Services/LedManager"
+
+}

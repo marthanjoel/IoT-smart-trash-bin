@@ -1,0 +1,8 @@
+{
+    "name" : "StatisticalAnalizer",
+    "ServiceType" : "REST",
+    "info" : {
+        "IP": "stb_statistical_analyzer",
+        "port" : 80
+    }
+}

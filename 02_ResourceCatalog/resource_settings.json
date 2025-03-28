@@ -1,0 +1,7 @@
+{
+    "projectName": "SmartTrashBin",
+    "info": {
+        "IP":"stb_resource_catalog",
+        "port":"80"
+    }
+}

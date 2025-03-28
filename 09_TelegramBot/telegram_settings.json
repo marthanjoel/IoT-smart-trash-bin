@@ -1,0 +1,10 @@
+{
+    "name": "TelegramBot",
+    "ServiceType": ["REST","MQTT"],
+    "topic" : "None",
+    "info": {
+        "IP": "missing",
+        "port": "missing"
+    },
+    "topic_sub" : ["SmartTrashBin/Services/AlertCheck/#"]
+}
