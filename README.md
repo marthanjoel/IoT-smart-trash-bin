@@ -21,7 +21,7 @@ It uses Docker containers for modularity, MQTT for communication, and REST for i
 ## 🧱 Microservice Architecture
 
 ```
-SmartTrashBin_DEF/
+SmartTrashBin-IoT/
 ├── 01_ServiceCatalog/       # Service registration & discovery
 ├── 02_ResourceCatalog/      # Device registration & metadata
 ├── 03_QualityCheck/         # Image-based waste validation
@@ -68,7 +68,7 @@ Ensure your `ThingSpeak` credentials and channel IDs are correctly configured in
 ### Run the Project
 
 ```bash
-cd SmartTrashBin_DEF
+cd name_of_your_folder
 docker compose up -d
 ```
 
