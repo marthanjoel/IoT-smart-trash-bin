@@ -1,96 +1,110 @@
-
 # SmartTrashBin 🗑️
 
-An IoT-based smart trash bin management system using a modular microservice architecture with Docker and MQTT.
-
-## 📌 Project Overview
-
-**SmartTrashBin** is designed to manage urban trash collection efficiently by monitoring waste bins in real-time. The system performs:
-
-- 🔍 **Quality checks** (e.g., improper waste detection)
-- 📏 **Quantity checks** (e.g., bin fill level)
-- 🚨 **Alerts** when bins require urgent attention
-- 🔧 **Catalog services** for devices and services
-- 📢 **Telegram Bot** for interacting with users
-- 📊 **ThingSpeak integration** for data visualization
-
-It uses Docker containers for modularity, MQTT for communication, and REST for interaction with external systems.
+An **IoT-based Smart Trash Bin Management System** built with a modular microservice architecture using **Docker, MQTT, and Python**.  
+This project demonstrates how IoT can help manage waste collection efficiently by monitoring bin levels and quality in real time.
 
 ---
 
-## 🧱 Microservice Architecture
-
-```
-SmartTrashBin-IoT/
-├── 01_ServiceCatalog/       # Service registration & discovery
-├── 02_ResourceCatalog/      # Device registration & metadata
-├── 03_QualityCheck/         # Image-based waste validation
-├── 04_QuantityCheck/        # Level sensor data processing
-├── 05_AlertCheck/           # Event alerting and notifications
-├── 09_TelegramBot/          # Telegram bot for user interaction & alerts
-├── docker-compose.yml       # Docker orchestration
-```
-
-Each microservice includes:
-- A `Dockerfile`
-- A Python module (`*.py`)
-- `requirements.txt`
-- Configuration in JSON format
+## 📌 Features
+- 🔍 **Quality Check** – Detects improper waste disposal.  
+- 📏 **Quantity Check** – Monitors bin fill levels with sensors.  
+- 🚨 **Alerts** – Sends notifications when bins require urgent attention.  
+- 🧾 **Catalog Services** – Handles service and device registration.  
+- 💬 **Telegram Bot** – Interact with the system and receive updates.  
+- 📊 **ThingSpeak Integration** – For real-time visualization of data.  
 
 ---
 
-## 💬 Telegram Bot
+## ⚙️ Setup Steps
+1. **Install dependencies**  
+   - Docker & Docker Compose  
+   - Python 3.x (optional for Tkinter GUI)  
+   - Mosquitto MQTT broker (optional)  
 
-The **Telegram Bot** module:
-- Responds to REST commands sent by users (e.g., requesting bin status)
-- Subscribes to MQTT alerts and forwards them as Telegram messages
+   On Ubuntu:  
+Clone the repository
 
-> Configuration is handled in `telegram_settings.json`.
+git clone https://github.com/marthanjoel/SmartTrashBin-IoT.git
+cd SmartTrashBin-IoT
 
----
+(Optional) Run the Tkinter GUI
 
-## 📊 ThingSpeak Integration
+python3 app.py
 
-Some services publish sensor data to [ThingSpeak](https://thingspeak.com/) for monitoring and visualization.
 
-Ensure your `ThingSpeak` credentials and channel IDs are correctly configured in the respective microservices.
-
----
-
-## 🚀 Getting Started
-
-### Requirements
-- Docker & Docker Compose
-- MQTT Broker (e.g., Mosquitto, can be added to `docker-compose.yml`)
-- Telegram Bot Token & Chat ID
-- ThingSpeak API credentials
-
-### Run the Project
-
-```bash
-cd name_of_your_folder
-docker compose up -d
-```
-
-All services will run in detached mode.
 
 ---
 
-## 🧪 Testing
+##🧪 How the Simulation Works##
 
-Each module runs independently and communicates over MQTT. Logs can be monitored via:
+The Sensors Simulator service generates fake data for:
 
-```bash
-docker compose logs -f
-```
+Bin fill level (ultrasonic sensor simulation)
 
-You can publish test data manually using MQTT or simulate bin sensors.
+Waste quality (image classification simulation)
+
+The data is published to an MQTT broker.
+
+Microservices subscribe to the data and process it:
+
+QuantityCheck → detects when bins are almost full.
+
+QualityCheck → validates waste type.
+
+AlertCheck → triggers urgent alerts if needed.
+
+ThingSpeak receives data for visualization.
+
+Telegram Bot forwards alerts and responds to user queries.
+
+Tkinter GUI shows a simple desktop dashboard for monitoring.
+<img width="1366" height="768" alt="Screenshot from 2025-09-10 15-55-24" src="https://github.com/user-attachments/assets/281bced4-598f-4358-9dff-07d67d860b77" />
+
+
+
+--
+
+##🔌 Sensors or Devices Emulated##
+
+Since this is a simulation-based project, physical sensors are replaced by software simulators:
+
+Ultrasonic sensor → simulated for bin fill levels.
+
+Camera module → simulated for waste quality detection.
+
+LED indicators → emulated by the LedManager microservice.
+
+Telegram Bot → emulates real-world notifications to waste managers.
+
+
 
 ---
+##⚠️ Challenges Faced##
 
-## 🎥 Demo & Media
+Setting up multiple microservices and making them communicate smoothly with MQTT.
 
-- Demo video: `media/DemoVideo/`
-- Commercial/promo: `media/CommercialVideo/`
+Handling Docker dependencies (e.g., conflicts with containerd and Docker installations).
 
----
+Integrating with ThingSpeak and managing API keys securely.
+
+Creating a user-friendly interface (Telegram + Tkinter).
+
+
+
+
+
+----
+##🚀 Ideas for Future Improvements##
+
+Add real hardware sensors (ultrasonic + camera) on a Raspberry Pi.
+
+Implement AI-based waste classification using TensorFlow or PyTorch.
+
+Optimize data storage with a local database (e.g., InfluxDB).
+
+Create a mobile app for easier access to bin data.
+
+Improve the Tkinter dashboard with graphs and historical statistics.
+
+
+
